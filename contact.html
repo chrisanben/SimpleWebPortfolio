@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chris' Site - Contact Me</title>
+        <!-- 
+        	Author: Chris Bentley
+        	Name: contact.html [CONTACT ME]
+        	Date: 30/04/14
+        	Description: Contact Me page for the website, has a built in form that asks for visitors ID and a link to the social webpages.
+        -->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+        
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+       	<!-- Nav Bar + Logo Image for Page -->
+		<img class="image" src="img/logo.jpg" id="logo" />
+		
+		<div id="page">
+			<div id="navBar">
+			<article>
+					<nav id="menu-container">
+						<ul id="navigationMenu">
+							<li><a href="index.html" class="normalMenu">Home</a></li>
+							<li><a href="aboutme.html" class="normalMenu">Chris Who?</a></li>
+							<li><a href="projects.html" class="normalMenu">Projects</a></li>
+							<li><a href="services.html" class="normalMenu">Services</a></li>
+							<li><a href="https://github.com/chrisanben" class="normalMenu">GitHub</a></li>		
+							<li><a href="contact.html" class="normalMenuSelected">Contact Me</a></li>
+						</ul>
+					</nav>
+				</article>
+			</div>
+			
+			<!-- Page Cotent for Contact Me -->
+			<div id="contactPage">
+				<h1>GET IN TOUCH</h1>
+				<h3>If you have any questions or comments, or if you want to contact me for a quote or a job, please use the form below and I'll get back to you as soon as I can.</h3>
+				
+				<!-- Form for taking the visitors information -->
+				<form>
+					<legend>Send Me a Message</legend>
+					<ul>
+					
+					<li>
+					<label for="name">What's your Name?</label>
+					<input type="text" name="textfield" id="name" />
+					</li>
+					
+					<li>
+					<label for="email">What's your Email?</label>
+					<input type="text" name="textfield2" id="email" />
+					</li>
+					
+					<li>
+					<label for="message">Type your Message</label>
+					<textarea name="textarea" id="message" rows=10></textarea>
+					</li>
+					
+					</ul>
+	
+				<input type="submit" class="submit" name="submit" value="Submit"/>
+				</form>
+			</div>
+
+			<!-- Social Images Links -->
+			<div id="social">
+		    	<h3>Keep in Contact!</h3>
+			    	<ul class="social">
+					   <li class="linkedin">
+					      <a href="http://www.linkedin.com/profile/view?id=221709607">
+					      </a>
+					   </li>
+					   <li class="facebook">
+					      <a href="https://www.facebook.com/christoffer.bentley">
+					      </a>
+					   </li>
+					</ul>
+				</div>
+			
+		<footer> © 2014, C2B Software.</footer>
+		</div>
+
+        <!-- End of Content -->
+    
+    	
+
+    
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

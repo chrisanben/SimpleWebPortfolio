@@ -10,7 +10,7 @@ everything fits with everyone's needs.
 
 * [App Stores](#app-stores)
 * [DNS prefetching](#dns-prefetching)
-* [Google Universal Analytics](#google-universal-analytics)
+* [Google Analytics augments](#google-analytics-augments)
 * [Internet Explorer](#internet-explorer)
 * [Miscellaneous](#miscellaneous)
 * [News Feeds](#news-feeds)
@@ -63,7 +63,7 @@ page.
 
 The goal of this is that when the foreign IP address is finally needed it will
 already be in the client cache and will not block the loading of the foreign
-content. Fewer requests result in faster page load times. The perception of this
+content. Less requests result in faster page load times. The perception of this
 is increased on a mobile platform where DNS latency can be greater.
 
 #### Disable implicit prefetching
@@ -131,37 +131,39 @@ on blogs.msdn.com)
 * http://dayofjs.com/videos/22158462/web-browsers_alex-russel
 
 
-## Google Universal Analytics
+## Google Analytics augments
 
 ### More tracking settings
 
-The [optimized Google Universal Analytics
-snippet](http://mathiasbynens.be/notes/async-analytics-snippet#universal-analytics)
-included with HTML5 Boilerplate includes something like this:
+The [optimized Google Analytics
+snippet](http://mathiasbynens.be/notes/async-analytics-snippet) included with
+HTML5 Boilerplate includes something like this:
 
 ```js
-ga('create','UA-XXXXX-X'); ga('send','pageview');
+var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
 ```
 
-To customize further, see Google's [Advanced
-Setup](https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced),
-[Pageview](https://developers.google.com/analytics/devguides/collection/analyticsjs/pages),
-and [Event](https://developers.google.com/analytics/devguides/collection/analyticsjs/events) Docs.
+In case you need more settings, just extend the array literal instead of
+[`.push()`ing to the
+array](http://mathiasbynens.be/notes/async-analytics-snippet#dont-push-it)
+afterwards:
+
+```js
+var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview'], ['_setAllowAnchor', true]];
+```
 
 ### Anonymize IP addresses
 
 In some countries, no personal data may be transferred outside jurisdictions
 that do not have similarly strict laws (i.e. from Germany to outside the EU).
-Thus a webmaster using the Google Univeral Analytics may have to ensure that
-no personal (trackable) data is transferred to the US. You can do that with
-[the `ga('set', 'anonymizeIp', true);`
-parameter](https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#anonymizeip)
-before sending any events/pagviews. In use it looks like this:
+Thus a webmaster using the Google Analytics script may have to ensure that no
+personal (trackable) data is transferred to the US. You can do that with [the
+`_gat.anonymizeIp`
+option](http://code.google.com/apis/analytics/docs/gaJS/gaJSApi_gat.html#_gat._anonymizeIp).
+In use it looks like this:
 
 ```js
-ga('create','UA-XXXXX-X');
-ga('set', 'anonymizeIp', true);
-ga('send', 'pageview');
+var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_gat._anonymizeIp'], ['_trackPageview']];
 ```
 
 ### Track jQuery AJAX requests in Google Analytics
@@ -176,16 +178,16 @@ Add this to `plugins.js`:
  * Log all jQuery AJAX requests to Google Analytics
  * See: http://www.alfajango.com/blog/track-jquery-ajax-requests-in-google-analytics/
  */
-if (typeof ga !== "undefined" && ga !== null) {
+if (typeof _gaq !== "undefined" && _gaq !== null) {
     $(document).ajaxSend(function(event, xhr, settings){
-        ga('send', 'pageview', settings.url);
+        _gaq.push(['_trackPageview', settings.url]);
     });
 }
 ```
 
 ### Track JavaScript errors in Google Analytics
 
-Add this function after `ga` is defined:
+Add this function after `_gaq` is defined:
 
 ```js
 (function(window){
@@ -197,20 +199,18 @@ Add this function after `ga` is defined:
         };
     window.onerror = function (message, file, line, column) {
         var host = link(file).hostname;
-        ga('send', {
-          'hitType': 'event',
-          'eventCategory': (host == window.location.hostname || host == undefined || host == '' ? '' : 'external ') + 'error',
-          'eventAction': message,
-          'eventLabel': (file + ' LINE: ' + line + (column ? ' COLUMN: ' + column : '')).trim(),
-          'nonInteraction': 1
-        });
+        _gaq.push([
+            '_trackEvent',
+            (host == window.location.hostname || host == undefined || host == '' ? '' : 'external ') + 'error',
+            message, file + ' LINE: ' + line + (column ? ' COLUMN: ' + column : ''), undefined, undefined, true
+        ]);
     };
 }(window));
 ```
 
 ### Track page scroll
 
-Add this function after `ga` is defined:
+Add this function after `_gaq` is defined:
 
 ```js
 $(function(){
@@ -224,13 +224,15 @@ $(function(){
         scrollPercent = Math.round(100 * ($window.height() + $window.scrollTop())/$document.height());
         if (scrollPercent > 90 && !isDuplicateScrollEvent) { //page scrolled to 90%
             isDuplicateScrollEvent = 1;
-            ga('send', 'event', 'scroll',
-                'Window: ' + $window.height() + 'px; Document: ' + $document.height() + 'px; Time: ' + Math.round((new Date - scrollTimeStart )/1000,1) + 's'
-            );
+            _gaq.push(['_trackEvent', 'scroll',
+                'Window: ' + $window.height() + 'px; Document: ' + $document.height() + 'px; Time: ' + Math.round((new Date - scrollTimeStart )/1000,1) + 's',
+                undefined, undefined, true
+            ]);
         }
     });
 });
 ```
+
 
 ## Internet Explorer
 
@@ -352,7 +354,7 @@ or one of a predefined list of glyphs.
 ### Disable link highlighting upon tap in IE10
 
 Similar to [-webkit-tap-highlight-color](http://davidwalsh.name/mobile-highlight-color)
-in iOS Safari. Unlike that CSS property, this is an HTML meta element, and its
+in iOS Safari. Unlike that CSS property, this is an HTML meta element, and it's
 value is boolean rather than a color. It's all or nothing.
 
 ```html
@@ -523,30 +525,6 @@ the Microformats wiki](http://microformats.org/wiki/rel-shortlink).
 ```html
 <link rel="shortlink" href="h5bp.com">
 ```
-
-### Separate mobile URLs
-
-If you use separate URLs for desktop and mobile users, you should consider
-helping search engine algorithms better understand the configuration on your
-web site.
-
-This can be done by adding the following annotations in your HTML pages:
-
-* on the desktop page, add the `link rel="alternate"` tag pointing to the
-  corresponding mobile URL, e.g.:
-
-  `<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.example.com/page.html" >`
-
-* on the mobile page, add the `link rel="canonical"` tag pointing to the
-  corresponding desktop URL, e.g.:
-
-  `<link rel="canonical" href="http://www.example.com/page.html">`
-
-For more information please see:
-
-* https://developers.google.com/webmasters/smartphone-sites/details#separateurls
-* https://developers.google.com/webmasters/smartphone-sites/feature-phones
-
 
 ## Web Apps
 

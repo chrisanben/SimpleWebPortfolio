@@ -1,13 +1,5 @@
 ### HEAD
 
-* Update to Apache Server Configs 2.3.0.
-* Use `<!doctype html>` instead of `<!DOCTYPE html>`
-  ([#1522](https://github.com/h5bp/html5-boilerplate/issues/1522)).
-* Update to Normalize.css 3.0.1.
-  ([#1050](https://github.com/h5bp/html5-boilerplate/issues/1050)).
-* Add `/browserconfig.xml` file and tile images
-  ([#1481](https://github.com/h5bp/html5-boilerplate/issues/1481)).
-* Update to jQuery 1.11.0.
 * Add `Disallow:` to `robots.txt`
   ([#1487](https://github.com/h5bp/html5-boilerplate/issues/1487)).
 * Remove default foreground color from form elements
@@ -18,11 +10,14 @@
   ([#1472](https://github.com/h5bp/html5-boilerplate/issues/1472),
    [#1475](https://github.com/h5bp/html5-boilerplate/issues/1475)).
 * Update to Modernizr 2.7.1.
+* Update to Apache Server Configs 2.1.0.
 * Add vertical centering for `svg`
   ([#1453](https://github.com/h5bp/html5-boilerplate/issues/1453)).
 * Redesign 404 page
   ([#1443](https://github.com/h5bp/html5-boilerplate/pull/1443)).
 * Remove IE 6/7 hacks from `main.css`
+  ([#1050](https://github.com/h5bp/html5-boilerplate/issues/1050)).
+* Update to Normalize.css 2.1.3
   ([#1050](https://github.com/h5bp/html5-boilerplate/issues/1050)).
 * Remove IE conditional classes
   ([#1187](https://github.com/h5bp/html5-boilerplate/issues/1187),
@@ -30,7 +25,7 @@
 
 ### 4.3.0 (September 10, 2013)
 
-* Use one `apple-touch-icon` instead of six
+* Use one apple-touch-icon instead of six
   ([#1367](https://github.com/h5bp/html5-boilerplate/issues/1367)).
 * Move font-related declarations from `body` to `html`
   ([#1411](https://github.com/h5bp/html5-boilerplate/issues/1411)).

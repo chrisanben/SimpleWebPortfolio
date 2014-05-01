@@ -3,7 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Chris' Site - Home</title>
+        <!-- 
+        	Author: Chris Bentley
+        	Name: index.html [HOME PAGE]
+        	Date: 30/04/14
+        	Description: Home site for my Portfolio site, it contains a navigation bar element, a carousel of images with links and 2 link images that go to my facebook and linkedin.
+        -->
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,7 +18,10 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/carousel.js"></script>
+        
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -19,17 +29,81 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-		<article>
-			<nav id="menu-container">
-				<ul id="navigationMenu">
-					<li><a href="#home" class="normalMenu">Home</a></li>
-					<li><a href="#news" class="normalMenu">News</a></li>
-					<li><a href="#contact" class="normalMenu">Contact</a></li>
-					<li><a href="#about" class="normalMenu">About</a></li>
-				</ul>
-			</nav>
-		</article>
+		<img class="image" src="img/logo.jpg" id="logo" />
+		
+		<div id="page">
+			<div id="navBar">
+			<article>
+					<nav id="menu-container">
+						<ul id="navigationMenu">
+							<li><a href="index.html" class="normalMenuSelected">Home</a></li>
+							<li><a href="aboutme.html" class="normalMenu">Chris Who?</a></li>
+							<li><a href="projects.html" class="normalMenu">Projects</a></li>
+							<li><a href="services.html" class="normalMenu">Services</a></li>
+							<li><a href="https://github.com/chrisanben" class="normalMenu">GitHub</a></li>		
+							<li><a href="contact.html" class="normalMenu">Contact Me</a></li>
+						</ul>
+					</nav>
+				</article>
+			</div>
+			
+			<!-- Introductory text to visitor -->
+			<article>
+				<h1>Hello there! I'm Chris, welcome to my site.</h1>
+				<br>
+				<h2>Work smart not hard, applies to web development/programming!</h2>
+				<br>
+				<p>
+					To solve all of your technological problems and inecuacies by programming/developing what you need. I am a programmer at heart, I like coding and problem solving, the more difficult or challenging the better I thrill for the excitement. I chose to be a programmer because one day I found myself in high school and thought to myself, "hey, maybe I should try this programming class", and Bam! I'm a programmer now. Programming is also something I'm good at, due to my problem solving skills and my "innate" lazyness to find the quickest path.
+				</p>
+			</article>
+			
+		<br>
+		<hr />
+		<br>
+		
+		<!-- Image Carousel that slides images when arrows are clicked -->
+		<div id="carousel">
+        <h3>Projects I've Worked On:</h3>
+        <div id="left_button" class="button_panel"><img src="img/left.svg" alt=""></div>
+        <div id="display_panel"> 
+            <ul id="image_list">
+                <li><a href="https://github.com/chrisanben/SlotMachine"><img src="./img/proj1.PNG" alt="Don't Starve SlotMachine"></a></li>
+                <li><a href="https://github.com/chrisanben/SideScroller"><img src="./img/proj2.PNG" alt="Road Rush Python Coded Game"></a></li>
+				<li><a href="https://github.com/Felanrod/Python_ProjectA_With_Chris_B"><img src="./img/proj3.PNG" alt="Tank Shooter PyGame"></a></li>
+				<li><a href="proj4.html"><img src="./img/proj4.PNG" alt="Hero Rush Flash Game"></a></li>
+            </ul>
+        </div>
+        <div id="right_button" class="button_panel"><img src="img/right.svg" alt=""></div>
+    	<a href="projects.html" id="viewmore">View More Projects</a>
+    	</div>
+    	
+    	<!-- Social Image section with to image links to LinkedIn and Facebook -->    	
+    	<div id="social">
+    	<h3>Keep in Contact!</h3>
+	    	<ul class="social">
+			   <li class="linkedin">
+			      <a href="http://www.linkedin.com/profile/view?id=221709607">
+			      </a>
+			   </li>
+			   <li class="facebook">
+			      <a href="https://www.facebook.com/christoffer.bentley">
+			      </a>
+			   </li>
+			</ul>
+		</div>
 
+			
+			
+		<footer> © 2014, C2B Software.</footer>
+		</div>
+
+        <!-- End of Content -->
+    
+    	
+
+    
+    
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

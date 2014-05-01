@@ -91,35 +91,40 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-/* Page styles */
 
-body,h1,h2,h3,p,td,quote,small,form,input,ul,li,ol,label{	/* resetting some elements for better browser compatibility */
+/* resetting some elements for better browser compatibility */
+body,h1,h2,h3,p,td,quote,small,form,input,ul,li,ol,label{	
     margin:0px;
     padding:0px;
 }
 
-body{	/* styling the body */
+/* styling the body */
+body{	
     margin-top:20px;
     font-family:Arial, Helvetica, sans-serif;
     color:#51555C;
+    background:black;
+    background-image:url(../img/back.jpg);
+    background-repeat: no-repeat;	
     height:100%;
     font-size:12px;
+    padding:5px;
+    position: relative;
 }
 
-/* Navigation menu styles */
-
-ul{	/* the unordered list */
+/* navigation menu styles */
+#menu-container ul{	/* the unordered list */
     height:25px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:12px;
 }
 
-ul li{
+#menu-container ul li{
     border:1px solid #444444;
     display:inline-block;	/* changing the display property */
     float:left;	/* floating the list items to the left */
     height:25px;
-    list-style-type:none;	/* disabling the list icon */
+    list-style-type:none;	/* disabling the bullet list icon */
     overflow:hidden;	/* hiding the overflowing content */
 }
 
@@ -131,50 +136,204 @@ ul li a:visited{
 /* styling the links */
 .normalMenu, .normalMenu:visited,
 .hoverMenu, .hoverMenu:visited,
-.selectedMenu,.selectedMenu:visited {/* these properties are shared between the classes */
+.selectedMenu,.selectedMenu:visited, 
+.normalMenuSelected, .normalMenuSelected:visited {/* these properties are shared between the classes */
     outline:none;
+    font-weight: bold;
     padding:5px 10px;
     display:block;
+    width: 100px;
+    text-align: center;
 }
 
 /* styles that are assigned individually */
-
 .hoverMenu,.hoverMenu:visited,
-.selectedMenu,.selectedMenu:visited {
+.selectedMenu,.selectedMenu:visited
+.normalMenuSelected, .normalMenuSelected:visited {
     margin-top:-25px;
-    background:url(img/grey_bg.gif) repeat-x #eeeeee;
+    background:url(img/back.jpg) repeat-x #FFFFFF;
     color:#444444;
 }
 
+
 .selectedMenu,.selectedMenu:visited {
-    margin:0;
+    margin: 0px;
 }
 
-.normalMenu, .normalMenu:visited{
+/* style the menu when selected or visited */
+.normalMenu, .normalMenu:visited,
+.normalMenuSelected, .normalMenuSelected:visited{
     color:white;
-    background:url(img/dark_bg.gif) repeat-x #444444;
+    background:url(img/back.jpg) repeat-x #444444;
 }
 
-article {
-	background-image:url(../img/back.jpg);	
+/*change color back to black if unhovered */
+.normalMenuSelected, .normalMenuSelected:visited{
+	color:black;
+	background:#ffffff;	
 }
+
+/* set position/location for menu */
+#menu-container{
+	margin-top: -50px;
+	position: absolute;
+}
+
+/* style the footer */
+footer {
+	background: white;
+	border:2px solid;
+	border-radius:25px;
+    position: absolute;
+    bottom: 50px;
+	margin-bottom: -10px;
+    text-align:center;
+    height: 15px;
+    width: 200px;
+
+}
+
+/* style main page content*/
+#page {
+	margin-left: 200px;
+	margin-top: -100px;
+	margin-bottom: 50px;
+	margin-right:25px;
+	padding: 25px;
+	background:#FFFFFF;
+	border:2px solid;
+	border-radius:25px;
+	
+}
+
+/*style the logo for website*/
+#logo{
+	padding-top: 25px;
+	padding-left: 25px;
+	height:150px;
+	width:150px;	
+}
+
+/* the styles for the carousel */
+.button_panel	{
+	height: 100px;
+	padding: 25px 15px;
+	float: left;
+	border:2px solid;
+	border-color:black;
+}
+.button_panel img {
+	padding-top: 25px;
+	width: 25px;
+	height: 50px;
+}
+#display_panel {
+	height: 150px;
+	width: 300px;
+	overflow: hidden;
+	float: left;
+	border:2px solid;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-color:black;
+}
+#image_list {
+	left: 0px;
+	position: relative;   
+    width: 1208px;
+    list-style: none;  
+}
+#image_list li	{
+	float: left;
+	width: 300px;
+	height: 150px;
+}
+#image_list li img	{
+	width: 300px;
+	height: 175px;
+}
+
+/* Stylize button for index.html */
+#viewmore {
+	display:block;
+    background: url("../img/button.jpg") no-repeat;
+    background-size: 210px 30px;
+    margin-top: 155px;
+    height:30px;
+    width:210px; 
+    padding-top: 5px;
+    padding-left: 25px;
+    color: black;
+    font-family:"Arial Black";
+    font-size: 14px;
+}
+/* Set decoration as non for all hovers */
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none;}
+
+/* Align/Pad Text for About me */
+#introbio {
+	text-align: center;
+}
+#introbio h3 {
+	padding: 20px;
 }
 
 
+/* Set style, image and options for social (which is the social image links)*/
+#social {
+	float:right;
+	margin-right: -200px;
+	margin-top: -205px;
+	position:relative;
+}
+.social { list-style:none; margin:30px auto; width:464px; }
+.social li { display:inline; float:left; padding: 5px; background-repeat:no-repeat; height:48px; border-width: 0px;}
+.social li a { display:block; width:50px; height:50px; position:relative; text-decoration:none; }
+li.facebook { background-image:url("../img/facebook.png"); background-size: 50px 50px;}
+li.linkedin { background-image:url("../img/linkedin.png"); background-size: 50px 50px;}
 
 
+/*Set text style for projects page */
+#projPage h1 {
+	text-align:center;
+}
+#projImg ul li{
+	list-style-type:none;	/* disabling the list icon */
+    overflow:hidden;	/* hiding the overflowing content */
+}
+#projImg ul li img{
+	padding:30px;
+	height:225px;
+	width:300px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+/*Set styles for contact me page */
+#contactPage ul li {
+	list-style-type:none;	/* disabling the list icon */
+	overflow:hidden;	/* hiding the overflowing content */
+	padding: 10px;
+}
+#contactPage form{
+	margin: 20px;
+	font-weight: bold;
+}
+#contactPage legend{
+	font-size: 18px;
+}
+#contactPage textarea {
+	width: 400px;
+}
+#contactPage label {
+	display:block;
+}
+.submit {
+	margin-top: 10px;
+	margin-left: 5px;
+	padding: 5px;
+}
 
 /* ==========================================================================
    Helper classes
@@ -333,4 +492,4 @@ article {
     }
 }
 
-/* Testing CSS */
+
